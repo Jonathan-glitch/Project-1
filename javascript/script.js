@@ -1,15 +1,24 @@
 //Random User API
-var rUser;
-$.ajax({
-    url: 'https://randomuser.me/api/',
-    dataType: 'json',
-    success: function(data) {
-      console.log(data);
-      rUser = data
-    }
-  })
+let rUser = [];
 
-  
+function ranUsers(){
+$.ajax({
+  url: 'https://randomuser.me/api/?results=5',
+  dataType: 'json',
+  async: true,
+  success: function(data) {
+    // console.log(data);
+    rUser = data;
+    console.log(rUser)
+  }
+});
+}  
+
+ranUsers()
+
+
+
+
 
   //Google Map
   var map;
@@ -20,8 +29,8 @@ $.ajax({
       });
     }
 
-//Geolocation
 
+//Geolocation
 var map, infoWindow;
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
