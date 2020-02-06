@@ -1,6 +1,10 @@
-//Random User API
+//Global Variables
 let rUser = [];
-
+//place holder zip variable
+let phZip = [];
+//zip to change rUser data to
+let mZip = 34112
+//Random User API
 function ranUsers(){
 $.ajax({
   url: 'https://randomuser.me/api/?results=5',
@@ -11,7 +15,8 @@ $.ajax({
     // rUser = data;
     var ranUserPull = data;
     rUser = ranUserPull
-    console.log(rUser)
+    // console.log(rUser)
+    rUserZip()
   }
 });
 }  
@@ -22,7 +27,16 @@ $.ajax({
 
 ranUsers()
 
-
+function rUserZip(){
+     
+    //Loop through rUser.results and target postcode
+    for ( var i = 0; i < rUser.results.length; i ++)
+    //   //push to mZip variable
+      phZip.push(rUser.results[i].location.postcode);
+      //remove and replace with user zip code
+      // rUser.results[i].location.postcode.splice(mZip)
+      
+}
 
 
 
