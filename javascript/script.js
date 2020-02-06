@@ -29,12 +29,10 @@ ranUsers()
 
 function rUserZip(){
      
-    //Loop through rUser.results and target postcode
+    ///Loop through rUser.results and target postcode
     for ( var i = 0; i < rUser.results.length; i ++)
-    //   //push to mZip variable
-      phZip.push(rUser.results[i].location.postcode);
-      //remove and replace with user zip code
-      // rUser.results[i].location.postcode.splice(mZip)
+    //set rUser postcode to value stored in mZip
+      rUser.results[i].location.postcode = mZip;
       
 }
 
