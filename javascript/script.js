@@ -8,11 +8,17 @@ $.ajax({
   async: true,
   success: function(data) {
     // console.log(data);
-    rUser = data;
+    // rUser = data;
+    var ranUserPull = data;
+    rUser = ranUserPull
     console.log(rUser)
   }
 });
 }  
+
+//Modify rUser to locate data into user's zip
+
+
 
 ranUsers()
 
