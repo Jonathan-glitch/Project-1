@@ -4,11 +4,17 @@
     width: 500px;
 }
 
-/* .form {
-    border: 1px solid black;
+
+.new-user-form {
+    margin-left: 50px;
 }
-
-.results {
-    border: 1px solid black;
-} */
-
+#username {
+   padding-left: 200px;
+}
+.app-name {
+    text-align: center;
+}
+.social-media {
+    padding-left: 800px;
+    font-size: small;
+}
