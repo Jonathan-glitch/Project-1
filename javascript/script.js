@@ -1,5 +1,10 @@
+//Firebase
+firebase.initializeApp(firebaseConfig);
+
+let db = firebase.database();
+
 //Global Variables
-let rUser = [];
+let rUser = {};
 //place holder zip variable
 let phZip = [];
 //zip to change rUser data to
@@ -9,7 +14,7 @@ function ranUsers(){
 $.ajax({
   url: 'https://randomuser.me/api/?results=5',
   dataType: 'json',
-  async: true,
+  async: false,
   success: function(data) {
     // console.log(data);
     // rUser = data;
@@ -17,26 +22,51 @@ $.ajax({
     rUser = ranUserPull
     // console.log(rUser)
     rUserZip()
+    rUserFb()
   }
 });
 }  
-
-//Modify rUser to locate data into user's zip
-
-
-
 ranUsers()
-
+//Modify rUser to change location zip into user's zip
 function rUserZip(){
-     
     ///Loop through rUser.results and target postcode
     for ( var i = 0; i < rUser.results.length; i ++)
     //set rUser postcode to value stored in mZip
       rUser.results[i].location.postcode = mZip;
-      
 }
+// push rUser to firebase db
+function rUserFb () {
+  //for each user in results array
+  //push name, gender, location/zip to firebase
+  //variables to declare
+    //fname,lname, location, gender, email, dob
+  var fName;
+  var lname;
+  var zip;
+  var gender;
+  var email;
+  var dob;
 
+  for (var i = 0; i < rUser.results.length; i++){
+    console.log(rUser)
+    fName = rUser.results[i].name.first;
+    console.log(rUser.results[0])
+    lName = rUser.results[i].name.last;
+    zip = rUser.results[i].location.postcode;
+    gender = rUser.results[i].gender;
+    email = rUser.results[i].email;
+    dob = rUser.results[i].dob
 
+  db.ref().push({
+    firstName:fName,
+    lastName: lName,
+    postcode: zip,
+    email: email,
+    dob: dob,
+    gender: gender,
+  })
+ } 
+}
 
   //Google Map
   var map;
