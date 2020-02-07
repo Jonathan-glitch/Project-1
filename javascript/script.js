@@ -41,7 +41,7 @@ function rUserFb () {
   //variables to declare
     //fname,lname, location, gender, email, dob
   var fName;
-  var lname;
+  var lName;
   var zip;
   var gender;
   var email;
