@@ -30,9 +30,10 @@ ranUsers()
 //Modify rUser to change location zip into user's zip
 function rUserZip(){
     ///Loop through rUser.results and target postcode
-    for ( var i = 0; i < rUser.results.length; i ++)
+    for ( var i = 0; i < rUser.results.length; i ++){
     //set rUser postcode to value stored in mZip
       rUser.results[i].location.postcode = mZip;
+      }
 }
 // push rUser to firebase db
 function rUserFb () {
@@ -41,21 +42,21 @@ function rUserFb () {
   //variables to declare
     //fname,lname, location, gender, email, dob
   var fName;
-  var lname;
+  var lName;
   var zip;
   var gender;
   var email;
   var dob;
 
   for (var i = 0; i < rUser.results.length; i++){
-    console.log(rUser)
+    // console.log(rUser)
     fName = rUser.results[i].name.first;
-    console.log(rUser.results[0])
+    // console.log(rUser.results[0])
     lName = rUser.results[i].name.last;
     zip = rUser.results[i].location.postcode;
     gender = rUser.results[i].gender;
     email = rUser.results[i].email;
-    dob = rUser.results[i].dob
+    dob = rUser.results[i].dob;
 
   db.ref().push({
     firstName:fName,
@@ -67,7 +68,57 @@ function rUserFb () {
   })
  } 
 }
+//Grab user data and push to firebase db
 
+function uForm (){
+  //on click function targeting submit button 
+  $("#button").on("click", function(event){
+    //prevent default
+    event.preventDefault()
+      console.log("Here")
+      var formData = {//create variables for form input fields
+        fN: $("#firstName").val().trim(),
+        lN: $("#lastName").val().trim(),
+        // gender: $("#gender").val().trim(),
+        //birthday???
+        // uName: $("#username").val().trim(),
+        // pW: $("#password").val().trim(),
+        city: $("#city").val().trim(),
+        // state:$("#state").val().trim(),
+        zip: $("#zip").val().trim(),
+        tac: $("#invalidCheck2").val().trim(),
+      }
+      console.log(formData)
+      var formArray = Object.values(formData)
+      console.log(formArray)
+        //create if statement to check all fields have been filled out
+        for (var i = 0; i < formArray.length;i ++){
+          if ($(formArray[i]) === ''){
+            console.log("Please fill in all fields")
+            console.log(formArray[i])}
+        }
+        //push user form data to firebase db
+        db.ref().push({
+          firstName: formData.fN,
+          lastName: formData.lN,
+          city: formData.city,
+          postcode: formData.zip,
+          // email: email,
+          // dob: dob,
+          tac: formData.tac
+        })
+        
+
+        //clear user form
+        $(formData.fn).val('');
+        $(formData.lN).val('');
+        $(formData.city).val('');
+        $(formData.zip).val('');
+        $(formData.tac).val('');
+        
+    })  
+
+  }
   //Google Map
   var map;
     function initMap() {
@@ -139,5 +190,5 @@ var map, infoWindow;
                               'Error: Your browser doesn\'t support geolocation.');
         infoWindow.open(map);
       }
-      
-      
+
+uForm()
