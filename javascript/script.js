@@ -136,19 +136,43 @@ var map, infoWindow;
           center: {lat: -34.397, lng: 150.644},
           zoom: 6
         });
+        // placing marker on map based on user location
+        // var myLatLng = {lat:,lng: }
+        
+
         infoWindow = new google.maps.InfoWindow;
 
         // Try HTML5 geolocation.
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {
+            console.log(position);
+            
             var pos = {
               lat: position.coords.latitude,
               lng: position.coords.longitude
             };
 
-            infoWindow.setPosition(pos);
-            infoWindow.setContent('Location found.');
-            infoWindow.open(map);
+            var geoEndPoint = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" +pos.lat +","+pos.lng+"&key=" + rogerKey;
+            $.ajax({
+              url:geoEndPoint,
+              method:"get" 
+            }).then(
+              function(res){
+                console.log(res.results[0].formatted_address);
+                
+              }
+            );
+
+            var marker = new google.maps.Marker({
+                      position: pos,
+                      map: map,
+                      title: 'Hello World!'
+                    });
+                    
+
+            // infoWindow.setPosition(pos);
+            // infoWindow.setContent('Location found.');
+            // infoWindow.open(map);
             map.setCenter(pos);
           }, function() {
             handleLocationError(true, infoWindow, map.getCenter());
@@ -166,4 +190,5 @@ var map, infoWindow;
                               'Error: Your browser doesn\'t support geolocation.');
         infoWindow.open(map);
       }
+
 uForm()
