@@ -88,17 +88,34 @@ function uForm (){
         zip: $("#zip").val().trim(),
         tac: $("#invalidCheck2").val().trim(),
       }
-      // console.log(formData)
+      console.log(formData)
       var formArray = Object.values(formData)
       console.log(formArray)
         //create if statement to check all fields have been filled out
         for (var i = 0; i < formArray.length;i ++){
-          if ($(formArray[i]) === '')
+          if ($(formArray[i]) === ''){
             console.log("Please fill in all fields")
-            console.log(formArray[i])
+            console.log(formArray[i])}
         }
         //push user form data to firebase db
+        db.ref().push({
+          firstName: formData.fN,
+          lastName: formData.lN,
+          city: formData.city,
+          postcode: formData.zip,
+          // email: email,
+          // dob: dob,
+          tac: formData.tac
+        })
+        
+
         //clear user form
+        $(formData.fn).val('');
+        $(formData.lN).val('');
+        $(formData.city).val('');
+        $(formData.zip).val('');
+        $(formData.tac).val('');
+        
     })  
 
   }
