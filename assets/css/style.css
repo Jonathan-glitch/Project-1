@@ -1,22 +1,49 @@
+html {
+    min-height: 100%;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+footer {
+    text-align: center;
+}
+
+.jumbotron{
+    text-align: center;
+    min-height: 80vh;
+}
+
+.register-container {
+    padding: 50px;
+    width: 60%;
+    margin: 0 auto;
+}
+
+.login-container {
+    padding: 50px;
+    width: 500px;
+    margin: 0 auto;
+    min-height: 80vh;
+}
+
+.home-container {
+    margin-top: 25px;
+}
+
+.register-container h3, .login-container h3{
+    padding-bottom: 25px;
+}
 
 #map {
     height: 400px;
     width: 500px;
 }
 
-
-.new-user-form {
-    margin-left: 50px;
-}
-#username {
-   padding-left: 200px;
-}
-.app-name {
-    text-align: center;
-}
 .social-media {
-    padding-left: 900px;
     font-size: small;
+    margin-top: 10px;;
 }
 .results {
     text-align: center;
