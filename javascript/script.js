@@ -93,8 +93,7 @@ function uForm (){
       }
       console.log(formData)
       var formArray = Object.values(formData)
-      console.log(formArray)
-        //create if statement to check all fields have been filled out
+      console.log(formArray)        //create if statement to check all fields have been filled out
         for (var i = 0; i < formArray.length;i ++){
           if ($(formArray[i]) === ''){
             console.log("Please fill in all fields")
