@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SwoleMates - Home</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" type="text/css" href="./assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+</head>
+
+<body>
+    <div class="fluid-container">
+        <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="/index.html">SwoleMates</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#topNavbar"
+                aria-controls="topNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="topNavbar">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="dropdown-item" href="./login.html">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="home-container">
+            <div class="row">
+                <div class="col-8 col-md-8 col-lg-8">
+                    <h4>Profile Matches</h4>
+                    <div class="results"> 
+                    </div>
+                </div>
+                <div class="col-4 col-md-4 col-lg-4 map">
+                    <div id="map"></div>
+                </div>
+            </div>
+            <div class="row justify-content-end social-media">
+                <div class="col-4 col-md-4 col-lg-4">
+                    <h4>Social Media Feed</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="mt-auto">
+        <div class="inner">
+            <p><a href="/index.html">SwoleMates</a>, by Triple Threat</a>.</p>
+        </div>
+    </footer>
+    <!-- Firebase App/DB -->
+    <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-database.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <script src="config.js"></script>
+    <script src="./javascript/script.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCf7tCxY_dvVr2h1sX5d_jZOfj7DQ952Uw&callback=initMap"
+        async defer>
+        </script>
+</body>
+
+</html>
