@@ -8,7 +8,9 @@ let rUser = {};
 //place holder zip variable
 let phZip = [];
 //zip to change rUser data to
-let mZip = 34112
+let mZip;
+
+let isLocated = false;
 //Random User API
 function ranUsers(){
 $.ajax({
@@ -22,11 +24,12 @@ $.ajax({
     rUser = ranUserPull
     // console.log(rUser)
     rUserZip()
+    locateUser()
     rUserFb()
   }
 });
 }  
-ranUsers()
+
 //Modify rUser to change location zip into user's zip
 function rUserZip(){
     ///Loop through rUser.results and target postcode
@@ -72,7 +75,7 @@ function rUserFb () {
 
 function uForm (){
   //on click function targeting submit button 
-  $("#button").on("click", function(event){
+  $("#submit").on("click", function(event){
     //prevent default
     event.preventDefault()
       console.log("Here")
@@ -119,7 +122,19 @@ function uForm (){
     })  
 
   }
-  //Google Map
+
+  //check if zip code has loaded from geoCode and set isLocated to true if user is located by zip
+  function locateUser(){
+
+    if (mZip !== 0){
+      isLocated = true;
+    } else {
+      return
+    }
+
+  }
+
+  //Google Map 
   var map;
     function initMap() {
       map = new google.maps.Map(document.getElementById('map'), {
@@ -158,8 +173,13 @@ var map, infoWindow;
               method:"get" 
             }).then(
               function(res){
-                console.log(res.results[0].formatted_address);
-                
+                console.log(res.results[0].address_components[7].short_name);
+                mZip = res.results[0].address_components[7].short_name/*.formatted_address)*/;
+                ranUsers()
+                // db.ref().on("child_added", function(snapshot){
+                //   var dv = snapshot.val()
+                //   console.log(dv)
+                // })
               }
             );
 
@@ -190,5 +210,6 @@ var map, infoWindow;
                               'Error: Your browser doesn\'t support geolocation.');
         infoWindow.open(map);
       }
+      
 uForm()
 
