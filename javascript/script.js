@@ -11,6 +11,8 @@ let phZip = [];
 let mZip;
 
 let isLocated = false;
+
+let sdv;
 //Random User API
 function ranUsers(){
 $.ajax({
@@ -18,7 +20,7 @@ $.ajax({
   dataType: 'json',
   async: false,
   success: function(data) {
-    // console.log(data);
+    console.log(data);
     // rUser = data;
     var ranUserPull = data;
     rUser = ranUserPull
@@ -50,6 +52,7 @@ function rUserFb () {
   var gender;
   var email;
   var dob;
+  var pic;
 
   for (var i = 0; i < rUser.results.length; i++){
     // console.log(rUser)
@@ -60,7 +63,7 @@ function rUserFb () {
     gender = rUser.results[i].gender;
     email = rUser.results[i].email;
     dob = rUser.results[i].dob;
-
+    pic = rUser.results[i].picture.medium
   db.ref().push({
     firstName:fName,
     lastName: lName,
@@ -68,6 +71,7 @@ function rUserFb () {
     email: email,
     dob: dob,
     gender: gender,
+    picture: pic,
   })
  } 
 }
@@ -148,7 +152,7 @@ var map, infoWindow;
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: -34.397, lng: 150.644},
-          zoom: 6
+          zoom: 10
         });
         // placing marker on map based on user location
         // var myLatLng = {lat:,lng: }
@@ -172,13 +176,30 @@ var map, infoWindow;
               method:"get" 
             }).then(
               function(res){
-                console.log(res.results[0].address_components[7].short_name);
+                console.log(res.results[0]);
                 mZip = res.results[0].address_components[7].short_name/*.formatted_address)*/;
                 ranUsers()
-                // db.ref().on("child_added", function(snapshot){
-                //   var dv = snapshot.val()
-                //   console.log(dv)
-                // })
+                db.ref().orderByChild("postcode").equalTo(mZip).on("child_added", function(snapshot) {
+                  // console.log(snapshot.val());
+                  var dv = snapshot.val()
+                  //push results to HTML
+                  // console.log(dv)
+                  
+                  //   console.log("here")
+                    var uN = dv.firstName;
+                    var uL = dv.lastName;
+                    var uG = dv.gender; 
+                    var uE = dv.email;
+                    var uA = dv.dob.age;
+                    var pic = dv.picture
+
+                    var card = $("<div class='card px-3'><div class='card-header'>" + uN +" " + uL + " | " + uE + "</div><div class='card-body'><div class='card-title'><form><div class='row'><div class='col-md-4'><img src=" + pic + "><p class='card-text'>" + uN + uL + "<br>"+ uG + "<br>"+ uA + "<br>"+ uE + "</p><div class='row'><div class='form-group col'></div></div></fieldset></div></div></form><br><a href='#' class='btn btn-primary btn-lg'>Email</a></div></div>");
+                    // var cBody = $('<div class="card-body">')
+                    
+                    $(".results").append(card)
+                    // $(".card").appendChild(cBody)
+
+                })
               }
             );
 
