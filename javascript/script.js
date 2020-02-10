@@ -92,8 +92,8 @@ function uForm (){
         // pW: $("#password").val().trim(),
         city: $("#city").val().trim(),
         // state:$("#state").val().trim(),
-        zip: $("#zip").val().trim(),
-        tac: $("#invalidCheck2").val().trim(),
+        // zip: $("#zip").val().trim(),
+        // tac: $("#invalidCheck2").val().trim(),
       }
       console.log(formData)
       var formArray = Object.values(formData)
@@ -109,10 +109,10 @@ function uForm (){
           firstName: formData.fN,
           lastName: formData.lN,
           city: formData.city,
-          postcode: formData.zip,
+          // postcode: formData.zip,
           // email: email,
           // dob: dob,
-          tac: formData.tac
+          // tac: formData.tac
         })
         
 
@@ -178,7 +178,7 @@ var map, infoWindow;
             }).then(
               function(res){
                 console.log(res.results[0]);
-                mZip = res.results[0].address_components[7].short_name/*.formatted_address)*/;
+                mZip = res.results[0].address_components[6].short_name/*.formatted_address)*/;
                 ranUsers()
                 db.ref().orderByChild("postcode").equalTo(mZip).on("child_added", function(snapshot) {
                   // console.log(snapshot.val());
