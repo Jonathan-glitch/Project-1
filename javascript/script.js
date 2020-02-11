@@ -122,6 +122,7 @@ function uForm (){
         $(formData.zip).val('');
         $(formData.tac).val('');
         
+        window.location.href = "home.html"
     })  
 
   }
@@ -193,7 +194,7 @@ var map, infoWindow;
                     var uA = dv.dob.age;
                     var pic = dv.picture
 
-                    var card = $("<div class='card px-3'><div class='card-header'>" + uN +" " + uL + " | " + uE + "</div><div class='card-body'><div class='card-title'><form><div class='row'><div class='col-md-4'><img src=" + pic + "><p class='card-text'>" + uN + uL + "<br>"+ uG + "<br>"+ uA + "<br>"+ uE + "</p><div class='row'><div class='form-group col'></div></div></fieldset></div></div></form><br><a href='#' class='btn btn-primary btn-lg'>Email</a></div></div>");
+                    var card = $("<div class='card px-3'><div class='card-header'>" + uN +" " + uL + " | " + uE + "</div><div class='card-body'><div class='card-title'><form><div class='row'><div class='col-md-4'><img src=" + pic + "><p class='card-text'>" + uN + uL + "<br>"+ uG + "<br>"+ uA + "<br>"+ uE + "</p><div class='row'><div class='form-group col'></div></div></fieldset></div></div></form><br><a href='mailto:" + uE + "'class= 'btn btn-primary btn-lg'>Email</a></div></div>");
                     // var cBody = $('<div class="card-body">')
                     
                     $(".results").append(card)
