@@ -38,67 +38,81 @@
     </div>
     <div class="container">
         <div class="register-container">
-            <h3>New User Registration</h3>
-            <form>
-                <div class="form-group">
-                    <label for="validationDefaultUsername">Username</label>
-                    <input type="text" class="form-control" id="username" aria-describedby="validationDefaultUsername" required>
-                </div>
-                <div class="form-group">
-                    <label for="inputPassword6">Password</label>
-                    <input type="password" id="inputPassword6 password" class="form-control" aria-describedby="passwordHelpInline" required>
-                    <small id="passwordHelpInline" class="text-muted">
-                      Must be 8-20 characters long.
-                    </small>
-                </div>
-                <div class="form-group">
-                    <label for="validationDefaultEmail">Email</label>
-                    <input type="email" class="form-control" id="email" aria-describedby="validationDefaultEmail" required>
-                </div>
-                <div class="form-group">
-                    <label for="validationDefault01">First name</label>
-                    <input type="text" class="form-control" id="firstName" required>
-                </div>
-                <div class="form-group">
-                    <label for="validationDefault02">Last name</label>
-                    <input type="text" class="form-control" id="lastName" required>
-                </div>
-                <div class="form-group">
-                    <label for="validationDefault04">Gender</label>
-                    <select class="custom-select" id="gender" required>
-                        <option selected disabled value="">Choose...</option>
-                        <option>Male</option>
-                        <option>Female</option>
-                        <option>Non Binary</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="validationDefault02">Birthday:</label>
-                    <input type="date" class="form-control" name="bday" required>
-                </div>
-                <div class="form-group">
-                    <label for="validationDefault03">City</label>
-                    <input type="text" class="form-control" id="city" required>
-                </div>
-                <div class="form-group">
-                    <label for="validationDefault04">State</label>
-                    <select class="custom-select" id="state" required>
-                      <option selected disabled value="">Choose...</option>
-                      <option>...</option>
-                    </select>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="tac" required>
-                    <label class="form-check-label" for="invalidCheck2">
-                        Agree to terms and conditions
-                    </label>
-                </div>
-                <br/>
+            <div class="row justify-content-center">
+                <div class="col col-md-6 col-lg-12">
+                    <h3>New User Registration</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="validationDefaultUsername">Username</label>
+                            <input type="text" class="form-control" id="username"
+                                aria-describedby="validationDefaultUsername" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputPassword6">Password</label>
+                            <input type="password" id="inputPassword6 password" class="form-control"
+                                aria-describedby="passwordHelpInline" required>
+                            <small id="passwordHelpInline" class="text-muted">
+                                Must be 8-20 characters long.
+                            </small>
+                        </div>
+                        <div class="form-group">
+                            <label for="validationDefaultEmail">Email</label>
+                            <input type="email" class="form-control" id="email"
+                                aria-describedby="validationDefaultEmail" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="validationDefault01">First name</label>
+                            <input type="text" class="form-control" id="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="validationDefault02">Last name</label>
+                            <input type="text" class="form-control" id="lastName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="validationDefault04">Gender</label>
+                            <select class="custom-select" id="gender" required>
+                                <option selected disabled value="">Choose...</option>
+                                <option>Male</option>
+                                <option>Female</option>
+                                <option>Non Binary</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="validationDefault02">Birthday:</label>
+                            <input type="date" class="form-control" name="bday" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="validationDefault03">City</label>
+                            <input type="text" class="form-control" id="city" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="validationDefault04">State</label>
+                            <select class="custom-select" id="state" required>
+                                <option selected disabled value="">Choose...</option>
+                                <option>...</option>
+                            </select>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="tac" required>
+                            <label class="form-check-label" for="invalidCheck2">
+                                Agree to terms and conditions
+                            </label>
+                        </div>
+                        <br />
 
+<<<<<<< HEAD
                 <button class="btn btn-primary" id="submit" type="submit">></a>Submit</button>
             </form>
+=======
+                        <button class="btn btn-primary" id="submit" type="submit"
+                            onclick="window.location.href='home.html'"></a>Submit</button>
+                    </form>
+                </div>
+            </div>
+>>>>>>> ce2578615d5a597c2771ceb1f29b65b62c14845a
         </div>
     </div>
+
     <footer class="mt-auto">
         <div class="inner">
             <p><a href="./index.html">SwoleMates</a>, by Triple Threat</a>.</p>
@@ -118,8 +132,8 @@
     <script src="config.js"></script>
     <script src="./javascript/script.js"></script>
     <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCf7tCxY_dvVr2h1sX5d_jZOfj7DQ952Uw&callback=initMap" -->
-        <!-- async defer> -->
-        </script>
+    <!-- async defer> -->
+    </script>
 </body>
 
 </html>
